@@ -7,10 +7,18 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <dl class="descriptionList">listBox
-      <dt class="messageBody">listItem</dt>
-      <dd class="messageDate"></dd>
-      <dd class="messageNo"></dd>
+    <dl class="descriptionList">Sent Messages
+    <% for (var i=0; i < messages.length; i++) {%>
+      <dt class="messageBody">
+        <%= messages[i][0]%>
+      </dt>
+      <dd class="messageDate">
+        <%= messages[i][1]%>
+      </dd>
+      <dd class="messageNo">
+        <%= messages[i][2]%>
+      </dd>
+    <% } %>
     </dl>
   </body>
 </html>
