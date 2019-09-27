@@ -4,11 +4,15 @@
  */
 
 const sendMessage = (client, body, rec) => {
-  client.messages.create({
-    body: body,
-    from: '+12408378186',
-    to: rec
-  });
+  try {
+    return client.messages.create({
+      body: body,
+      from: '+12408378186',
+      to: rec
+    });
+  } catch (err) {
+    console.log(err); // TODO: Build out
+  }
 };
 
 module.exports.sendMessage = sendMessage;
