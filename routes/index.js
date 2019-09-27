@@ -9,11 +9,15 @@ const smsClient = require('../public/javascripts/smsClient');
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  const updatedMessages = await smsClient.updateMessages(twilioClient);
-  res.render('index', {
-    title: 'Control Center',
-    messages: updatedMessages
-  });
+  try {
+    const updatedMessages = await smsClient.updateMessages(twilioClient);
+    res.render('index', {
+      title: 'Control Center',
+      messages: updatedMessages
+    });
+  } catch (err) {
+    console.log(err); // TODO: Build out
+  }
 });
 
 module.exports = router;
