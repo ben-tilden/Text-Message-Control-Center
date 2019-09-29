@@ -10,33 +10,29 @@ const twilioClient = require('twilio')(accountSid, authToken);
 const smsClient = require('../public/javascripts/smsClient');
 
 /* GET home page. */
-router.get('/', async (req, res, next) => {
-  try {
-    const updatedMessages = await smsClient.updateMessages(twilioClient);
-    res.render('index', {
+router.get('/', (req, res, next) => {
+  smsClient.updateMessages(twilioClient)
+    .then(updatedMessages => res.render('index', {
       title: 'Control Center',
       messages: updatedMessages
-    });
-  } catch {
-    next(createError());
-  }
+    }))
+    .catch(() => next(createError()));
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    if (!req.body.body || !req.body.rec) {
-      res.status(400).send('400 Bad Request');
-    } else {
-      const isRealRec = await smsClient.verify(req.body.rec, twilioClient);
-      if (!isRealRec) {
-        res.status(400).send('400 Bad Request');
-      } else {
-        await smsClient.sendMessage(twilioClient, req.body.body, req.body.rec);
-        res.sendStatus(200);
-      }
-    }
-  } catch {
-    res.status(500).send('500 Internal Server Error');
+router.post('/', (req, res, next) => {
+  if (!req.body.body || !req.body.rec) {
+    res.status(400).send('400 Bad Request');
+  } else {
+    smsClient.verify(req.body.rec, twilioClient)
+      .then(isRealRec => {
+        if (!isRealRec) {
+          res.status(400).send('400 Bad Request');
+        } else {
+          smsClient.sendMessage(twilioClient, req.body.body, req.body.rec)
+            .then(() => res.sendStatus(200));
+        }
+      })
+      .catch(() => res.status(500).send('500 Internal Server Error'));
   }
 });
 
