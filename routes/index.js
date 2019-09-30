@@ -1,5 +1,3 @@
-const createError = require('http-errors');
-
 const express = require('express');
 const router = express.Router();
 
@@ -9,14 +7,8 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 const smsClient = require('../public/javascripts/smsClient');
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  smsClient.updateMessages(twilioClient)
-    .then(updatedMessages => res.render('index', {
-      title: 'Control Center',
-      messages: updatedMessages
-    }))
-    .catch(() => next(createError()));
+router.get('/', function (req, res, next) {
+  res.sendStatus(200);
 });
 
 router.post('/', (req, res, next) => {

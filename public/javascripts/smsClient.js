@@ -21,10 +21,11 @@ const updateMessages = async client => {
   const messageList = [];
   const fullList = await client.messages.list({ limit: 20 }); // TODO: Determine limit value
   fullList.forEach(m => {
-    const messageData = [];
-    messageData.push(m.body);
-    messageData.push(m.dateSent);
-    messageData.push(m.to);
+    const messageData = {};
+    messageData.body = (m.body);
+    messageData.date = (m.dateSent).toLocaleString();
+    messageData.rec = (m.to);
+    messageData.id = (m.sid);
     messageList.push(messageData);
   });
   return messageList;
