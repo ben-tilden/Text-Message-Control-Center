@@ -7,7 +7,7 @@ The backend is handled with Node.js/Express, the frontend React.
 Addressing its request handling: 
 * POST requests to '/' with json or urlEncoded "body" and "rec" parameters send a message "body" to phone number "rec"
 * GET requests to '/messages' receive the most recent 10 messages sent
-* POST requests to '/messages' with json or urlEncoded "url" as a REST API url receive a json response of "url"
+* POST requests to '/messages' with json or urlEncoded "url" as a REST API url receive a json response of the contents (in this application, Twilio messages) located at the "url"
 
 ## Dependencies
 
