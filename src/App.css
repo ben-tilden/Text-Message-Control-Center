@@ -5,30 +5,31 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 45px;
+  margin: 10px;
 }
 
 .App-header {
   background: linear-gradient(132deg, #c8d0ff 0%, #d9e0f3 100%);
 
-  min-height: 8vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  /*font-size: calc(10px + 2vmin);*/
+}
+
+h1, h2 {
+  font-family: "Belleza", serif;
+  color: #2f447e;
+  margin: 10px;
 }
 
 h1 {
-  font-family: "Belleza", serif;
   font-size: 56px;
-  color: #2f447e;
 }
 
 h2 {
-  font-family: "Belleza", serif;
   font-size: 40px;
-  color: #2f447e;
 }
 
 .message {
@@ -44,22 +45,29 @@ h2 {
 p {
   color: #2f447e;
   margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.body, .status {
+  font-size: 20px;
 }
 
 .body {
   font-weight: bold;
 }
 
-.date {
+.date, .rec {
   top: 5px;
-  left: 20px;
   position: absolute;
 }
 
+.date {
+  left: 20px;
+}
+
 .rec {
-  top: 5px;
   right: 20px;
-  position: absolute;
 }
 
 .messageFeed {
