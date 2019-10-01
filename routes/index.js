@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const path = require('path');
 
 const express = require('express');
 const router = express.Router();
@@ -16,7 +17,7 @@ const twilioClient = require('twilio')(accountSid, authToken);
 const smsClient = require('../lib/smsClient');
 
 // GET request serves React frontend
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/react_client/build/index.html'));
 });
 
