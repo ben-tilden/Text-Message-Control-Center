@@ -5,7 +5,7 @@
 }
 
 .App-logo {
-  height: 45px;
+  height: 9vw;
   margin: 10px;
 }
 
@@ -25,11 +25,11 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 12vw;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 8vw;
 }
 
 .message {
@@ -47,10 +47,11 @@ p {
   margin: 0px;
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 4vw;
 }
 
-.body, .status {
-  font-size: 20px;
+.body, .loader {
+  font-size: 6vw;
 }
 
 .body {

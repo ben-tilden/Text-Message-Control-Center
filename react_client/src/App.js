@@ -106,7 +106,7 @@ function App() {
       <Headroom>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>Mantra Health</h1>
+          <h1 className="title">Mantra Health</h1>
         </div>
       </Headroom>
       <div>
