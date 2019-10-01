@@ -9,7 +9,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'react_client/build')));
 
 app.use('/', indexRouter);
 app.use('/messages', messagesRouter);
