@@ -13,6 +13,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/messages', messagesRouter);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/react_client/build/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

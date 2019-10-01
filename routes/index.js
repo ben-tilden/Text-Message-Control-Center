@@ -15,6 +15,11 @@ const twilioClient = require('twilio')(accountSid, authToken);
 
 const smsClient = require('../lib/smsClient');
 
+// GET request serves React frontend
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname+'/react_client/build/index.html'));
+});
+
 // POST request sends text message "body" to "rec"
 router.post('/', (req, res, next) => {
   if (!req.body.body || !req.body.rec) {
