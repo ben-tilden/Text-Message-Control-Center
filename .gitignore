@@ -4,10 +4,10 @@
 .pnp.js
 
 # testing
-/coverage
+/react_client/coverage
 
 # production
-/build
+/react_client/build
 
 # misc
 .DS_Store
