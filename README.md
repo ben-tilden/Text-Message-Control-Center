@@ -1,6 +1,6 @@
 # Text Message Control Center
 
-Text Message Control Center is an application which displays all text messages sent via  a Twilio phone number. It has the functionality to send messages via POST requests to its server. 
+Text Message Control Center is an application which displays all text messages sent via a Twilio phone number. It has the functionality to send messages via POST requests to its server. 
 
 The backend is handled with Node.js/Express, the frontend React. 
 
