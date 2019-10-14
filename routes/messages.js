@@ -6,8 +6,8 @@ const router = express.Router();
 
 const api = {
   baseUrl: 'https://api.twilio.com',
-  accountSid: 'AC02c3544de9e4cd1c8f4c8bcbac203227',
-  authToken: 'b5c4a0f28c439a59abb20eb0dc0c7e06'
+  accountSid: process.env.ACCOUNT_SID,
+  authToken: process.env.AUTH_TOKEN
 };
 
 const authHeaders = new fetch.Headers();
