@@ -4,10 +4,11 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
+const authTokenImport = require('../private/authToken')
 const api = {
   baseUrl: 'https://api.twilio.com',
   accountSid: 'AC02c3544de9e4cd1c8f4c8bcbac203227',
-  authToken: 'b5c4a0f28c439a59abb20eb0dc0c7e06'
+  authToken: authTokenImport
 };
 
 const accountSid = api.accountSid;
