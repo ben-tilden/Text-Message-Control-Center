@@ -46,6 +46,7 @@ class SentMessages extends React.Component {
         url : nextPageUrl
       })
     };
+    console.log(obj)
     fetch('/messages', obj)
       .then(res => res.json())
       .then(res => {
@@ -106,7 +107,7 @@ function App() {
       <Headroom>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="title">Mantra Health</h1>
+          <h1 className="title">Control Center</h1>
         </div>
       </Headroom>
       <div>
