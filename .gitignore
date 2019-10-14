@@ -2,9 +2,6 @@
 node_modules
 npm-debug.log
 
-# Privacy
-/private/*
-
 # Local development
 *.env
 *.dev
