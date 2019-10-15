@@ -15,7 +15,7 @@ class SentMessages extends React.Component {
       this.state = {
         allMessages: [],
         nextPage: null,
-        hasMoreItems: true
+        hasMoreItems: false
       }
   }
 
@@ -23,16 +23,20 @@ class SentMessages extends React.Component {
   componentDidMount() {
     fetch('/messages')
       .then(res => res.json())
-      .then(res => this.setState({
-              allMessages: res.messages,
-              nextPage: res.next_page_uri
-            }))
-      .catch((err) => this.setState({ loaded: true }));
+      .then(res => {
+        if (res.next_page_uri) {
+          this.setState({
+            allMessages: res.messages,
+            nextPage: res.next_page_uri,
+            hasMoreItems: true
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   // Load more pages for Infinite Scroll
   loadNextPage(page) {
-    var self = this;
     let nextPageUrl = "";
     if (this.state.nextPage) {
       nextPageUrl = api.baseUrl + this.state.nextPage;
@@ -46,28 +50,27 @@ class SentMessages extends React.Component {
         url : nextPageUrl
       })
     };
-    console.log(obj)
     fetch('/messages', obj)
       .then(res => res.json())
       .then(res => {
         if (res) {
-          var updatedMessages = self.state.allMessages;
+          var updatedMessages = this.state.allMessages;
           res.messages.map(message => {
             updatedMessages.push(message);
           })
-          if (res.nextPage) {
-            self.setState({
+          if (res.next_page_uri) {
+            this.setState({
               allMessages: updatedMessages,
-              nextPage: res.nextPage
+              nextPage: res.next_page_uri
             });
           } else {
-            self.setState({
+            this.setState({
               hasMoreItems: false
             });
           }
         }
       })
-      .catch((err) => {console.log(err);});
+      .catch((err) => console.log(err));
   }
 
   render() {
